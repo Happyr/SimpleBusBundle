@@ -121,23 +121,23 @@ class CompilerPasses implements CompilerPassInterface
             $class = $def->getClass();
 
             if (method_exists($class, 'setEventRecorder')) {
-                $def->addMethodCall('setEventRecorder', array(new Reference('event_recorder')));
+                $def->addMethodCall('setEventRecorder', [new Reference('event_recorder')]);
             }
 
             if (method_exists($class, 'setCommandBus')) {
-                $def->addMethodCall('setCommandBus', array(new Reference('command_bus')));
+                $def->addMethodCall('setCommandBus', [new Reference('command_bus')]);
             }
 
             if (method_exists($class, 'setEventBus')) {
-                $def->addMethodCall('setEventBus', array(new Reference('event_bus')));
+                $def->addMethodCall('setEventBus', [new Reference('event_bus')]);
             }
 
             if ($doctrine && method_exists($class, 'setEntityManager')) {
-                $def->addMethodCall('setEntityManager', array(new Reference('doctrine.orm.entity_manager')));
+                $def->addMethodCall('setEntityManager', [new Reference('doctrine.orm.entity_manager')]);
             }
 
             if (in_array('Psr\Log\LoggerAwareInterface', class_implements($class))) {
-                $def->addMethodCall('setLogger', array(new Reference('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
+                $def->addMethodCall('setLogger', [new Reference('logger', ContainerInterface::NULL_ON_INVALID_REFERENCE)]);
             }
         }
     }
