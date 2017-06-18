@@ -14,9 +14,9 @@
         "psr/log": "~1.0",
 
         "happyr/mq2php-bundle": "^0.2.3",
-        "simple-bus/symfony-bridge": "^4.1",
+        "simple-bus/symfony-bridge": "^4.1.5",
         "simple-bus/doctrine-orm-bridge": "^4.0",
-        "simple-bus/jms-serializer-bundle-bridge": "^2.0",
+        "simple-bus/jms-serializer-bundle-bridge": "^2.0.2",
         "simple-bus/rabbitmq-bundle-bridge": "^3.1",
         "simple-bus/asynchronous-bundle": "^2.3",
         "simple-bus/asynchronous": "^2.1"
