@@ -32,7 +32,16 @@ class HappyrSimpleBusExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader->load('ping.yml');
+        $this->requireBundle('SimpleBusCommandBusBundle', $container);
+        $this->requireBundle('SimpleBusEventBusBundle', $container);
+        $this->requireBundle('SimpleBusAsynchronousBundle', $container);
+        $this->requireBundle('SimpleBusRabbitMQBundleBridgeBundle', $container);
+        $this->requireBundle('SimpleBusJMSSerializerBundleBridgeBundle', $container);
+        $this->requireBundle('HappyrMq2phpBundle', $container);
+        $this->requireBundle('OldSoundRabbitMqBundle', $container);
+        $this->requireBundle('JMSSerializerBundle', $container);
+
 
         if ($config['auto_register_handlers']['enabled']) {
             $handlerPath = $config['auto_register_handlers']['command_handler_path'];
@@ -159,6 +168,20 @@ class HappyrSimpleBusExtension extends Extension
 
             $def->addTag($tag, ['subscribes_to' => call_user_func($subscriberFQN.'::subscribesTo')]);
             $container->setDefinition($containerId, $def);
+        }
+    }
+
+    /**
+     * Make sure we have activated the required bundles.
+     *
+     * @param $bundleName
+     * @param ContainerBuilder $container
+     */
+    private function requireBundle($bundleName, ContainerBuilder $container)
+    {
+        $enabledBundles = $container->getParameter('kernel.bundles');
+        if (!isset($enabledBundles[$bundleName])) {
+            throw new \LogicException(sprintf('You need to enable "%s" as well', $bundleName));
         }
     }
 

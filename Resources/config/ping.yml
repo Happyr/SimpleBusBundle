@@ -1,0 +1,14 @@
+
+
+services:
+  rawls.command_handler.PingHandler:
+    class: Happyr\SimpleBusBundle\Message\CommandHandler\PingHandler
+    arguments: ["@?logger"]
+    tags:
+      - { name: asynchronous_command_handler, handles: Happyr\SimpleBusBundle\Message\Command\Ping }
+
+  rawls.event_subscriber.WhenPongWriteLog:
+    class: Happyr\SimpleBusBundle\Message\EventSubscriber\WhenPongWriteLog
+    arguments: ["@?logger"]
+    tags:
+      - { name: asynchronous_event_subscriber, subscribes_to: Happyr\SimpleBusBundle\Message\Event\Pong }

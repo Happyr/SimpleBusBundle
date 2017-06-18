@@ -20,7 +20,7 @@ class WhenPongWriteLog
         $this->logger = $logger;
     }
 
-    public function handle(Pong $event)
+    public function notify(Pong $event)
     {
         $data = $event->getData();
 
