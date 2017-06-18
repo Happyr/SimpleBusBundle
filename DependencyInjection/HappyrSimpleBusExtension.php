@@ -2,20 +2,15 @@
 
 namespace Happyr\SimpleBusBundle\DependencyInjection;
 
-use Happyr\SimpleBusBundle\EventListener\ExceptionConverterListener;
-use Happyr\SimpleBusBundle\EventListener\ExceptionLoggerListener;
-use Happyr\SimpleBusBundle\Message\AsyncCommandHandler;
 use Happyr\SimpleBusBundle\Message\AutoRegisteredEventSubscriber;
 use Happyr\SimpleBusBundle\Message\HandlesMessagesAsync;
 use Money\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -42,7 +37,6 @@ class HappyrSimpleBusExtension extends Extension
         $this->requireBundle('HappyrMq2phpBundle', $container);
         $this->requireBundle('OldSoundRabbitMqBundle', $container);
         $this->requireBundle('JMSSerializerBundle', $container);
-
 
         if ($config['auto_register_handlers']['enabled']) {
             $handlerPath = $config['auto_register_handlers']['command_handler_path'];

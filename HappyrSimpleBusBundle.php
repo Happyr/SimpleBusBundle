@@ -2,7 +2,6 @@
 
 namespace Happyr\SimpleBusBundle;
 
-use Happyr\Mq2phpBundle\DependencyInjection\Compiler\RegisterConsumers;
 use Happyr\SimpleBusBundle\DependencyInjection\CompilerPass\CompilerPasses;
 use Happyr\SimpleBusBundle\DependencyInjection\HappyrSimpleBusExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
