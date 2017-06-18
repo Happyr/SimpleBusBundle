@@ -18,5 +18,4 @@ class HappyrSimpleBusBundle extends Bundle
     {
         return new HappyrSimpleBusExtension();
     }
-
 }

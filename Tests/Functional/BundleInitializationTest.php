@@ -2,7 +2,6 @@
 
 namespace Happyr\SimpleBusBundle\Tests\Functional;
 
-
 use Happyr\Mq2phpBundle\HappyrMq2phpBundle;
 use Happyr\SimpleBusBundle\HappyrSimpleBusBundle;
 use Happyr\SimpleBusBundle\Message\Publisher\RabbitMQPublisher;
@@ -14,7 +13,6 @@ use SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle
 use SimpleBus\RabbitMQBundleBridge\SimpleBusRabbitMQBundleBridgeBundle;
 use SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle;
 use SimpleBus\SymfonyBridge\SimpleBusEventBusBundle;
-
 
 class BundleInitializationTest extends BaseBundleTestCase
 {
