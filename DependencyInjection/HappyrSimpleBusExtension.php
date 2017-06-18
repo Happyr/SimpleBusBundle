@@ -4,7 +4,6 @@ namespace Happyr\SimpleBusBundle\DependencyInjection;
 
 use Happyr\SimpleBusBundle\Message\AutoRegisteredEventSubscriber;
 use Happyr\SimpleBusBundle\Message\HandlesMessagesAsync;
-use Money\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
@@ -89,7 +88,7 @@ class HappyrSimpleBusExtension extends Extension
         $finder = new Finder();
         try {
             $finder->files()->in($handlerPath)->name('*Handler.php');
-        } catch (\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             return;
         }
 
@@ -136,7 +135,7 @@ class HappyrSimpleBusExtension extends Extension
         $finder = new Finder();
         try {
             $finder->files()->in($subscriberPath)->name('*.php');
-        } catch (\InvalidArgumentException $e){
+        } catch (\InvalidArgumentException $e) {
             return;
         }
 
