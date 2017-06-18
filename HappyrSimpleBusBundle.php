@@ -4,6 +4,7 @@ namespace Happyr\SimpleBusBundle;
 
 use Happyr\Mq2phpBundle\DependencyInjection\Compiler\RegisterConsumers;
 use Happyr\SimpleBusBundle\DependencyInjection\CompilerPass\CompilerPasses;
+use Happyr\SimpleBusBundle\DependencyInjection\HappyrSimpleBusExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -13,4 +14,10 @@ class HappyrSimpleBusBundle extends Bundle
     {
         $container->addCompilerPass(new CompilerPasses());
     }
+
+    public function getContainerExtension()
+    {
+        return new HappyrSimpleBusExtension();
+    }
+
 }

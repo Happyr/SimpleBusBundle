@@ -1,0 +1,8 @@
+services:
+  logger:
+    class: Monolog\Logger
+    arguments: ['dummy']
+
+  translator:
+    class: Symfony\Component\Translation\Translator
+    arguments: ['en']

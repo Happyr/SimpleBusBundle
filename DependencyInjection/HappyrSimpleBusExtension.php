@@ -7,6 +7,7 @@ use Happyr\SimpleBusBundle\EventListener\ExceptionLoggerListener;
 use Happyr\SimpleBusBundle\Message\AsyncCommandHandler;
 use Happyr\SimpleBusBundle\Message\AutoRegisteredEventSubscriber;
 use Happyr\SimpleBusBundle\Message\HandlesMessagesAsync;
+use Money\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Definition;
@@ -92,7 +93,11 @@ class HappyrSimpleBusExtension extends Extension
         $handlerNamespace = rtrim($handlerNamespace, '\\').'\\';
 
         $finder = new Finder();
-        $finder->files()->in($handlerPath)->name('*Handler.php');
+        try {
+            $finder->files()->in($handlerPath)->name('*Handler.php');
+        } catch (\InvalidArgumentException $e){
+            return;
+        }
 
         foreach ($finder as $file) {
             $handlerClassName = $file->getBasename('.php');
@@ -135,7 +140,11 @@ class HappyrSimpleBusExtension extends Extension
         $subscriberNamespace = rtrim($subscriberNamespace, '\\').'\\';
 
         $finder = new Finder();
-        $finder->files()->in($subscriberPath)->name('*.php');
+        try {
+            $finder->files()->in($subscriberPath)->name('*.php');
+        } catch (\InvalidArgumentException $e){
+            return;
+        }
 
         foreach ($finder as $file) {
             $subscriberClassName = $file->getBasename('.php');
