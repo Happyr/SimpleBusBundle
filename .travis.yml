@@ -3,13 +3,18 @@ language: php
 cache:
   directories:
     - $HOME/.composer/cache
+
 branches:
   except:
     - /^analysis-.*$/
 
+services:
+  - rabbitmq
+  
 php:
     - 7.0
     - 7.1
+
 env:
   global:
     - TEST_COMMAND="composer test"
