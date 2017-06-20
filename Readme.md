@@ -132,3 +132,14 @@ Be aware of the following base classes.
 * `BaseEventSubscriber` implements `AutoRegisteredEventSubscriber`
 * `HandlesMessagesAsync` (For async handlers/subscribers)
 * `DelayedMessage` (For async messages with a delay)
+
+### Direct publisher
+
+If do not want to use a queue you may use the direct publisher.
+
+```php
+happyr_simplebus:
+  use_direct_publisher: true
+
+```
+
