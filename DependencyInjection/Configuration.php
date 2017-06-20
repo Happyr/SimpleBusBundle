@@ -30,7 +30,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('event_subscriber_namespace')->defaultNull()->end()
                 ->scalarNode('event_subscriber_path')->defaultNull()->end()
             ->end()->end()
-
+            ->booleanNode('use_direct_publisher')->defaultFalse()->end()
         ->end();
 
         return $treeBuilder;

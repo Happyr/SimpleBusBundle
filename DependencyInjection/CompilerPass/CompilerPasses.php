@@ -2,6 +2,7 @@
 
 namespace Happyr\SimpleBusBundle\DependencyInjection\CompilerPass;
 
+use Happyr\SimpleBusBundle\Message\Publisher\DirectPublisher;
 use Happyr\SimpleBusBundle\Message\Publisher\RabbitMQPublisher;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -147,13 +148,35 @@ class CompilerPasses implements CompilerPassInterface
      */
     private function replaceSimpleBusPublisher(ContainerBuilder $container)
     {
-        if ($container->has('simple_bus.rabbit_mq_bundle_bridge.event_publisher')) {
+        if (!$container->has('simple_bus.rabbit_mq_bundle_bridge.event_publisher')) {
+            return;
+        }
+
+        if (!$container->getParameter('happyr.simplebus.direct_publisher')) {
             $container->getDefinition('simple_bus.rabbit_mq_bundle_bridge.event_publisher')
                 ->setClass(RabbitMQPublisher::class)
                 ->setLazy(true);
             $container->getDefinition('simple_bus.rabbit_mq_bundle_bridge.command_publisher')
                 ->setClass(RabbitMQPublisher::class)
                 ->setLazy(true);
+        } else {
+            $container->getDefinition('simple_bus.rabbit_mq_bundle_bridge.event_publisher')
+                ->setClass(DirectPublisher::class)
+                ->setLazy(true)
+                ->setArguments([
+                    new Reference('happyr.mq2php.consumer_wrapper'),
+                    new Reference('happyr.mq2php.message_serializer'),
+                    $container->getParameter('happyr.mq2php.event_queue_name')
+                ]);
+
+            $container->getDefinition('simple_bus.rabbit_mq_bundle_bridge.command_publisher')
+                ->setClass(DirectPublisher::class)
+                ->setLazy(true)
+                ->setArguments([
+                    new Reference('happyr.mq2php.consumer_wrapper'),
+                    new Reference('happyr.mq2php.message_serializer'),
+                    $container->getParameter('happyr.mq2php.command_queue_name')
+                ]);
         }
     }
 
