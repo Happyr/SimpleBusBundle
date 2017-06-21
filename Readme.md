@@ -25,7 +25,6 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ...
-            new Happyr\SimpleBusBundle\HappyrSimpleBusBundle(),
             new Happyr\Mq2phpBundle\HappyrMq2phpBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
@@ -34,6 +33,7 @@ class AppKernel extends Kernel
             new SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Happyr\SimpleBusBundle\HappyrSimpleBusBundle(),
         ];
         // ...
     }
@@ -132,3 +132,14 @@ Be aware of the following base classes.
 * `BaseEventSubscriber` implements `AutoRegisteredEventSubscriber`
 * `HandlesMessagesAsync` (For async handlers/subscribers)
 * `DelayedMessage` (For async messages with a delay)
+
+### Direct publisher
+
+If do not want to use a queue you may use the direct publisher.
+
+```php
+happyr_simplebus:
+  use_direct_publisher: true
+
+```
+

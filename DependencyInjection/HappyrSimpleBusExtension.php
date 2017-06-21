@@ -37,6 +37,7 @@ class HappyrSimpleBusExtension extends Extension
         $this->requireBundle('OldSoundRabbitMqBundle', $container);
         $this->requireBundle('JMSSerializerBundle', $container);
 
+        $container->setParameter('happyr.simplebus.direct_publisher', $config['use_direct_publisher']);
         if ($config['auto_register_handlers']['enabled']) {
             $handlerPath = $config['auto_register_handlers']['command_handler_path'];
             if (empty($handlerPath)) {
