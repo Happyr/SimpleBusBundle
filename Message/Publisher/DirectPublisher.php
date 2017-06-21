@@ -29,7 +29,6 @@ class DirectPublisher implements Publisher
     private $delayedMessages = [];
 
     /**
-     *
      * @param ConsumerWrapper $consumer
      */
     public function __construct(ConsumerWrapper $consumer, MessageInEnvelopSerializer $serializer, string $queueName)

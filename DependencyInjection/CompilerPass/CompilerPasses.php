@@ -166,7 +166,7 @@ class CompilerPasses implements CompilerPassInterface
                 ->setArguments([
                     new Reference('happyr.mq2php.consumer_wrapper'),
                     new Reference('happyr.mq2php.message_serializer'),
-                    $container->getParameter('happyr.mq2php.event_queue_name')
+                    $container->getParameter('happyr.mq2php.event_queue_name'),
                 ]);
 
             $container->getDefinition('simple_bus.rabbit_mq_bundle_bridge.command_publisher')
@@ -175,7 +175,7 @@ class CompilerPasses implements CompilerPassInterface
                 ->setArguments([
                     new Reference('happyr.mq2php.consumer_wrapper'),
                     new Reference('happyr.mq2php.message_serializer'),
-                    $container->getParameter('happyr.mq2php.command_queue_name')
+                    $container->getParameter('happyr.mq2php.command_queue_name'),
                 ]);
         }
     }
