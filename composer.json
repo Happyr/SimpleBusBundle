@@ -13,7 +13,7 @@
         "php": "^7.0",
         "psr/log": "~1.0",
 
-        "happyr/mq2php-bundle": "^0.2.3",
+        "happyr/mq2php-bundle": "^0.2.4",
         "simple-bus/symfony-bridge": "^4.1.5",
         "simple-bus/doctrine-orm-bridge": "^4.0",
         "simple-bus/jms-serializer-bundle-bridge": "^2.0.2",
