@@ -25,6 +25,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // ...
+            new Happyr\SimpleBusBundle\HappyrSimpleBusBundle(), // <-- Make sure this is before the SimpleBusBrige bundles. 
             new Happyr\Mq2phpBundle\HappyrMq2phpBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
             new SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
@@ -33,7 +34,6 @@ class AppKernel extends Kernel
             new SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Happyr\SimpleBusBundle\HappyrSimpleBusBundle(),
         ];
         // ...
     }
