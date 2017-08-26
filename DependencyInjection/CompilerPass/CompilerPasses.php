@@ -51,6 +51,7 @@ class CompilerPasses implements CompilerPassInterface
                     if ($removeServiceId !== null) {
                         // Remove the definition
                         $container->removeDefinition($removeServiceId);
+
                         continue;
                     }
                 }
