@@ -87,6 +87,7 @@ class HappyrSimpleBusExtension extends Extension
         $handlerNamespace = rtrim($handlerNamespace, '\\').'\\';
 
         $finder = new Finder();
+
         try {
             $finder->files()->in($handlerPath)->name('*Handler.php');
         } catch (\InvalidArgumentException $e) {
@@ -134,6 +135,7 @@ class HappyrSimpleBusExtension extends Extension
         $subscriberNamespace = rtrim($subscriberNamespace, '\\').'\\';
 
         $finder = new Finder();
+
         try {
             $finder->files()->in($subscriberPath)->name('*.php');
         } catch (\InvalidArgumentException $e) {
