@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+			new \SimpleBus\JMSSerializerBundleBridge\SimpleBusJMSSerializerBundleBridgeBundle(),
         ];
         // ...
     }
