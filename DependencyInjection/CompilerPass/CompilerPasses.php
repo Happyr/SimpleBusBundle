@@ -39,16 +39,16 @@ class CompilerPasses implements CompilerPassInterface
                     // Find the one that ends with '.auto'
                     $removeServiceId = null;
 
-                    if (substr($id, -5) === '.auto') {
+                    if ('.auto' === substr($id, -5)) {
                         $removeServiceId = $id;
                     }
 
-                    if (substr($commands[$tag['handles']], -5) === '.auto') {
+                    if ('.auto' === substr($commands[$tag['handles']], -5)) {
                         $removeServiceId = $commands[$tag['handles']];
                         $commands[$tag['handles']] = $id;
                     }
 
-                    if ($removeServiceId !== null) {
+                    if (null !== $removeServiceId) {
                         // Remove the definition
                         $container->removeDefinition($removeServiceId);
 
@@ -97,7 +97,7 @@ class CompilerPasses implements CompilerPassInterface
 
                 // IF we have multiple services registed to the same event subscriber, remove the auto added ones.
                 foreach ($services as $serviceId) {
-                    if (substr($serviceId, -5) === '.auto') {
+                    if ('.auto' === substr($serviceId, -5)) {
                         $container->removeDefinition($serviceId);
                     }
                 }
