@@ -24,7 +24,7 @@ class WhenPongWriteLog
     {
         $data = $event->getData();
 
-        if ($this->logger !== null) {
+        if (null !== $this->logger) {
             $this->logger->error('Pong event subscriber works!', ['data' => $data]);
         }
 

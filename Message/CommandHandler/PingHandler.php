@@ -24,7 +24,7 @@ class PingHandler
     {
         $data = $command->getData();
 
-        if ($this->logger !== null) {
+        if (null !== $this->logger) {
             $this->logger->error('Ping command handler works!', ['data' => $data]);
         }
 
